@@ -1,0 +1,10 @@
+<!--*ngIf directive tells Angular to render the details section only when selectedHero is defined-->
+<!--if no hero is selected then selectedHero is undefined, therefore, the hero details section won't display-->
+<div *ngIf="hero">
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div>id: {{hero.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+  </div>
+</div>

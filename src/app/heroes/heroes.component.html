@@ -1,7 +1,22 @@
-<h2>{{hero.name | uppercase}} Details</h2>
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <!--*ngFor is the repeater directive-->
+  <li *ngFor="let hero of heroes"> <!--li is the host element-->
+    <!--heroes holds the mock heroes list from the HeroesComponent class-->
+    <button type="button" (click)="onSelect(hero)"> <!--(click) tells Angular to listen for button element's click event-->
+      <!--holds the current hero object for each iteration through the list-->
+      <span class="badge">{{hero.id}}</span>
+      <span class="name">{{hero.name}}</span>
+    </button>
+  </li>
+</ul>
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail> <!--property binding-->
+
+<!-- <h2>{{hero.name | uppercase}} Details</h2>
 <div><span>id: </span>{{hero.id}}</div>
 <div>
-  <label for="name">Hero name: </label>
+  <label for="name">Hero name: </label> -->
   <!--ngModel directive adds two-way binding to an HTML form element-->
-  <input id="name" [(ngModel)]="hero.name" placeholder="name">
-</div>
+  <!-- <input id="name" [(ngModel)]="hero.name" placeholder="name">
+</div> -->
