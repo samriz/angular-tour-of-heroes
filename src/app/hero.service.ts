@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
+import { Observable, of } from 'rxjs';
 
 //@Injectable() decorator marks the class as one that participates in the dependency injection system
 @Injectable({
@@ -10,8 +11,10 @@ import { HEROES } from './mock-heroes';
 export class HeroService //any application class can use this service to get heroes
 {
   constructor() {}
-  getHeroes(): Hero[] 
+  getHeroes(): Observable<Hero[]> 
   {
-    return HEROES;
+    //of() simulates getting data from the server
+    const heroes = of(HEROES); //of() returns an Observable instance that synchronously delivers the HEROES array
+    return heroes;
   }
 }
