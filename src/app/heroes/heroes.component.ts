@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Hero} from "../hero";
 //import { HEROES } from '../mock-heroes';
 import { HeroService } from '../hero.service';
-import { MessageService } from '../message.service';
 
 //component decorator for Heroes Component class
 @Component({
@@ -12,14 +11,10 @@ import { MessageService } from '../message.service';
 })
 export class HeroesComponent implements OnInit //component class
 {
-  /* hero: Hero = {
-    id: 1,
-    name: "Windstorm"
-  }; */
 
   heroes: Hero[] = [];
   
-  constructor(private HeroService: HeroService, private messageService: MessageService) //The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site.
+  constructor(private HeroService: HeroService) //The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site.
   //When Angular creates a HeroesComponent, the Dependency Injection system sets the heroService parameter to the singleton instance of HeroService.
   {}
 
@@ -30,12 +25,6 @@ export class HeroesComponent implements OnInit //component class
     this.getHeroes();
   }
 
-  selectedHero?: Hero;
-  onSelect(hero: Hero): void 
-  {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
-  }
   getHeroes(): void
   {
     //this.heroes = this.HeroService.getHeroes();
